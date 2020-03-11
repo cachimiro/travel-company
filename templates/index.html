@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    {% for pais in Travel %}
+        {{pais.title}}
+        {{pais.subtitle}}
+        {{pais.subject}}
+        <img src="{{pais.travel_image_src}}"/>
+    {% endfor %}
+    
+    
+{% endblock %}
