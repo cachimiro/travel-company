@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="container">
 <div class="content-section">
-        <form method="POST" action="">
+<div class="row">
+<div class=" col-md-12-offset-3 col-lg-12-offset-3 col-sm-12">
+        <form method="POST" action="" class="style-forms">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
+            <fieldset class="form-group align-self-center">
+                <legend class="border-bottom mb-4 alagin-text">Log In</legend>
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
@@ -38,16 +41,21 @@
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
-            </div>
-            <small class="text-muted ml-2">
+                <small class="text-muted ml-2">
                 <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
             </small>
+            </div>
         </form>
+        </div>
     </div>
+    </div>
+    </div>
+    <div class="container">
     <div class="border-top pt-3">
         <small class="text-muted">
             Need An Accond? register and take part <a class="ml-2" href="{{ url_for('registration') }}">Sign Up Now</a>
         </small>
+    </div>
     </div>
 
 {% endblock %}

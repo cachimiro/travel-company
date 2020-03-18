@@ -152,6 +152,7 @@ def Login():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         if User and bcrypt.check_password_hash(hashed_password, form.password.data):
             login_user(User, remember=form.remember.data)
+            flash('you have been succefully logged in', 'primary')
             return redirect(url_for('index'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
@@ -163,6 +164,7 @@ def Login():
 @app.route('/logout')
 def Logout():
     logout_user()
+    flash('you have been succefully logged out', 'primary')
     return redirect(url_for('index'))
 
 

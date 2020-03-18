@@ -48,4 +48,27 @@
   }
 }
 
-/* this code is for the registration page */
+/* this code is for the log in page */
+.style-forms{
+    width: 40%;
+}
+@media only screen and (max-width: 600px) {
+  .style-forms{
+    width: 100%;
+  }
+}
+.alagin-text{
+    text-align: center;
+}
+/* this code is for the register form*/
+.style-register-forms{
+    width: 40%;
+}
+@media only screen and (max-width: 600px) {
+  .style-register-forms{
+    width: 100%;
+  }
+}
+.style-title-register{
+     text-align: center;
+}
