@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>{{ current_user.username }}</h2>
+<div class="container">
+<div class="row">
+<div class="col">
+<div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="https://i.pinimg.com/originals/ba/bb/cd/babbcd0fab242a5aef74335f777e08ff.jpg" style="height:100px;">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.username }}</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+      </div>
+      </div>
+</div>
+</div>
+       
 {% endblock %}
