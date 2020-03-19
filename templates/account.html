@@ -15,5 +15,24 @@
 </div>
 </div>
 <a href="{{ url_for('add_information_for_travel') }}">post</a>
+
+{% for pais in Travel | reverse %}
+  
+
+<h2> {{pais.title}} {{pais.subtitle}} </h2>
+<h3>{{pais.company}} </h3>
+<p id="{{ pais._id }}_truncateded" style="display: block;">{{pais.subject|truncate(500, True)}}</p>
+<p id="{{ pais._id }}_fulls" class="hide-all-text" style="display: none;">{{pais.subject}}</p>
+<img src="{{pais.travel_image_src}}" class="rounded" style="width:100%; height:100%"/>
+
+<button onclick="showMores('{{ opinion._id }}')" id="{{ opinion._id }}_shows">Show more</button>
+ <a href="{{url_for('update_opinion', pais_id=pais._id)}}">
+           <button type="button" class="btn pull-right btn-primary">Edit</button>
+           </a>
+           <a href="{{url_for('delete_Post', pais_id=pais._id)}}">
+           <button type="button" class="btn pull-right btn-danger">Delete</button>
+       </a>
+
+{% endfor %}
        
 {% endblock %}
