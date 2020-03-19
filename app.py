@@ -49,7 +49,7 @@ class user(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
 
 #this line if code is fo the password reset 
-    def get_reset_token(self, expires_sec=1800):
+    def get_reset_token(self, user, expires_sec=1800):
         s = Serializer(app.config['SECRET_KEY'], expires_sec)
         return s.dumps({'user_id': self.id}).decode('utf-8')
 
@@ -120,10 +120,27 @@ class resetPasswordForm(FlaskForm):
     submit = SubmitField('New password')
   
 
-#code for linking apps
+#code for index.html
 @app.route('/')
 def index():
+    
     return render_template("index.html", Travel=mongo.db.pais.find())
+
+#code for adding information to the index.html
+@app.route('/add_travel_info')
+@login_required
+def add_information_for_travel():
+    return render_template('add-info-travel.html')
+
+     
+@app.route('/add_review', methods=['POST'])
+@login_required
+def insert_reviews():
+    travel = mongo.db.pais
+    travel.insert_one(request.form.to_dict())
+    flash('your Post has been uploaded succesfully', 'info')
+    return redirect(url_for('index'))
+
 
 
 # this line of code is for my registration form
@@ -196,7 +213,7 @@ def reset_request():
     form = resetForm()
     if form.validate_on_submit():
         User = user.query.filter_by(email=form.email.data).first()
-        send_reset_email(user)
+        send_reset_email(User)
         flash('An email has been sent to the email registered with you instructions to reset passwors', 'info')
         return redirect(url_for('Login'))
     return render_template('reset.html', form=form)
