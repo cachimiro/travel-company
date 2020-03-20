@@ -138,19 +138,19 @@ def add_information_for_travel():
 def insert_reviews():
     travel = mongo.db.pais
     travel.insert_one(request.form.to_dict())
-    flash('your Post has been uploaded succesfully!' 'info')
+    flash('your Post has been uploaded succesfully!', 'info')
     return redirect(url_for('index'))
 
 
-@app.route('/edit_review/<pais_id>')
-def edit_review(pais_id):
-    the_post =  mongo.db.pais.find_one({"_id": ObjectId(paid_id)})
+@app.route('/update_post/<pais_id>')
+def edit_post(pais_id):
+    the_post =  mongo.db.pais.find_one({"_id": ObjectId(pais_id)})
     return render_template('update-post.html', pais=the_post)
 
 
 @app.route('/update_post/<pais_id>', methods=["POST"])
 @login_required
-def update_opinion(pais_id):
+def update_post(pais_id):
     post = mongo.db.pais
     post.update( {'_id': ObjectId(pais_id)},
     {
@@ -167,7 +167,9 @@ def update_opinion(pais_id):
 @app.route('/delete_post/<pais_id>')
 @login_required
 def delete_Post(pais_id):
-    mongo.db.opinion.remove({'_id': ObjectId(pais_id)})
+    delete = mongo.db.pais.remove({'_id': ObjectId(pais_id)})
+    if delete:
+        flash('post has been deleted', 'danger')
     return redirect(url_for('accounts'))
 
 # this line of code is for my registration form
@@ -216,7 +218,7 @@ def Logout():
 @app.route('/accounts')
 @login_required
 def accounts():
-    return render_template('account.html', title="Account")
+    return render_template('account.html', title="Account",Travel=mongo.db.pais.find())
 
 
 #this code will sned reset emails to the user
