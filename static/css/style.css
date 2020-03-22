@@ -104,4 +104,12 @@ color: black;
     background-color: #fafafa;
     text-decoration: none;
 }
+/* code for styling the accounts page */
+#style-user-name{
+    padding: 20px;
+    text-align: center;
 
+}
+#style-name{
+    text-transform: uppercase;
+}

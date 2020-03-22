@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+{% for users in profile %}
 <div class="container">
 	<div class="row">
-		<div class="col">
+		<div class="col-12">
 			<div class="content-section">
 				<div class="media">
-					<img class="rounded-circle account-img" src="https://i.pinimg.com/originals/ba/bb/cd/babbcd0fab242a5aef74335f777e08ff.jpg" style="height:100px;">
-					<div class="media-body">
-                      <h2 class="account-heading">{{current_user.username }}</h2>
+					<img class="rounded-circle account-img" src="{{users.Picture}}" style="height:150px;">
+                    {% endfor %}
+					<div class="media-body" id="style-user-name">
+                      <h2 class="account-heading" id="style-name">{{current_user.username }}</h2>
                        <p class="text-secondary">{{current_user.email }}</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<a href="{{ url_for('add_information_for_travel') }}">post</a>
+    <div class="container">
+    <div class="row">
+    <div class="col-4">
+    <a href="{{ url_for('add_information_for_travel') }}">Post Your company</a>
+    </div>
+    </div>
+    </div>
 	{% for pais in Travel | reverse %}
 <div class="container padding-index">
 <div class="row">
