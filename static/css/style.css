@@ -104,6 +104,21 @@ color: black;
     background-color: #fafafa;
     text-decoration: none;
 }
+/* this code is to add some animation to the index page */
+#animate-profile-image {
+  position: relative;
+  animation-name: example;
+  animation-duration: 3s;
+  animation-direction: reverse;
+  z-index: 1;  
+}
+@keyframes example {
+  0%   { left:0px; top:0px;}
+  25%  { left:200px; top:0px;}
+  50%  { left:200px; top:200px;}
+  75%  { left:0px; top:200px;}
+  100% { left:0px; top:0px;}
+}
 /* code for styling the accounts page */
 #style-user-name{
     padding: 20px;

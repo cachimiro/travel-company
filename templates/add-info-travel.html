@@ -5,13 +5,9 @@
 <div class="col-12">
 <form action="{{ url_for('insert_reviews') }}" method="POST">
   <div class="form-group">
-    <label for="title">Example select</label>
-    <select class="form-control" id="title" name="title">
-      <option>China</option>
-      <option>Colombia</option>
-      <option>USA</option>
-      <option>UK</option>
-      <option>Spain</option>
+    <label for="title">Select Country</label>
+    <select class="form-control" id="title-add" name="title">
+      <option value="default">All</option>
     </select>
   
   <div class="form-group">
