@@ -27,4 +27,3 @@ document.getElementById(id+"_show");
  }
 
  }
-

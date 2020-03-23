@@ -113,3 +113,19 @@ color: black;
 #style-name{
     text-transform: uppercase;
 }
+/* code for styling slideshow in the index.html */
+.slide-container{
+    position: relative;
+}
+.effect{
+    animation-name: effect;
+    animation-duration: 2s;
+}
+@keyframes effect{
+    from{
+        opacity: 0.3;
+    }
+    to{
+        opacity: 1;
+    }
+}

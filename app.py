@@ -118,64 +118,13 @@ class resetPasswordForm(FlaskForm):
                                      validators=[DataRequired(), EqualTo('password')])
 
     submit = SubmitField('New password')
-    """
-#code for infomation about people that work with us
-  @app.route('/companies')
-def companies():
     
-    return render_template("index.html", Travel=mongo.db.pais.find())
 
-
-@app.route('/add_company_info')
-@login_required
-def add_information_for_companies():
-    return render_template('add-info-company.html')
-
-     
-@app.route('/add_company', methods=['POST'])
-@login_required
-def insert_company():
-    travel = mongo.db.pais
-    travel.insert_one(request.form.to_dict())
-    flash('your Post has been uploaded succesfully!', 'info')
-    return redirect(url_for('index'))
-
-# this code is for updating info
-@app.route('/update_company/<posts_id>')
-def edit_(pais_id):
-    the_post =  mongo.db.pais.find_one({"_id": ObjectId(pais_id)})
-    return render_template('update-post.html', pais=the_post)
-
-
-@app.route('/update_post/<pais_id>', methods=["POST"])
-@login_required
-def update_post(pais_id):
-    post = mongo.db.pais
-    post.update( {'_id': ObjectId(pais_id)},
-    {
-        'title':request.form.get('title'),
-        'subtitle':request.form.get('subtitle'),
-        'company': request.form.get('company'),
-        'link': request.form.get('link'),
-        'subject':request.form.get('subject'),
-        'travel_image_src':request.form.get('travel_image_src')
-    })
-    return redirect(url_for('accounts'))
-
-
-@app.route('/delete_post/<pais_id>')
-@login_required
-def delete_Post(pais_id):
-    delete = mongo.db.pais.remove({'_id': ObjectId(pais_id)})
-    if delete:
-        flash('post has been deleted', 'danger')
-    return redirect(url_for('accounts'))
-"""
 #code for index.html
 @app.route('/')
 def index():
     
-    return render_template("index.html", Travel=mongo.db.post.find())
+    return render_template("index.html", Travel=mongo.db.pais.find())
 
 #code for adding information to the index.html deleteit and update it 
 @app.route('/add_travel_info')
@@ -184,7 +133,7 @@ def add_information_for_travel():
     return render_template('add-info-travel.html')
 
      
-@app.route('/add_review', methods=['POST'])
+@app.route('/add_post', methods=['POST'])
 @login_required
 def insert_reviews():
     travel = mongo.db.pais
@@ -210,7 +159,11 @@ def update_post(pais_id):
         'company': request.form.get('company'),
         'link': request.form.get('link'),
         'subject':request.form.get('subject'),
-        'travel_image_src':request.form.get('travel_image_src')
+        'travel_image_src':request.form.get('travel_image_src'),
+        'photo':request.form.get('photo'),
+        'photos':request.form.get('photos'),
+        'photoss':request.form.get('photoss'),
+        'photosss':request.form.get('photosss')
     })
     return redirect(url_for('accounts'))
 
