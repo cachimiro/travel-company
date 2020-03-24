@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
     <title>Cachi Travel</title>
+    <link rel="shortcut icon" type="image/png" href="static/img/cachi.png">
 </head>
 <body>
 <!-- header for my page that includes a side navbar -->
@@ -22,7 +23,7 @@
     <a href="{{ url_for('Login') }}">Login</a>
     <a href="{{ url_for('registration') }}">Register</a>
     {% endif %}
-    <a href="#">Clients</a>
+    <a href="{{ url_for('post') }}">Post</a>
     <a href="#">Contact</a>
   </div>
 </div>

@@ -271,6 +271,11 @@ def reset_token(token):
         flash(f'your passwword has been updated now ypu are able to log in!', 'success')
         return redirect(url_for('Login'))
     return render_template('reset-link.html', form=form)
+#code for the post.html
+@app.route('/post')
+def post():
+    return render_template("post.html", Post=mongo.db.posts.find())
+    
 
 
 if __name__ == '__main__':

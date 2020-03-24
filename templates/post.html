@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-
+ {% for posts in Post | reverse %}
+{{ posts.tiltle }}
+{{ posts.subtitle }}
+{{ posts.subject }}
+{{ posts.picture }}
+{{ posts.image }}
+{{ posts.images }}
+ {% endfor %}
     
 {% endblock %}
